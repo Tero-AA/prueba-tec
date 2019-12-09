@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from '../components/Post';
 import styled from 'styled-components';
 import { getPosts } from '../utils/api';
@@ -11,29 +11,21 @@ const Container = styled.div`
   background-color: #eee;
 `;
 
-class Posts extends Component {
-  constructor(props) {
-    super(props);
+function Posts() {
 
-    this.state = {
-      posts: [],
-      loading: true,
-    };
-  }
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  componentDidMount() {
+  useEffect(() => {
     getPosts()
       .then((res) => {
-        this.setState({
-          posts: res.data,
-          loading: false,
-        });
+        setPosts(res.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
-  }
+  });
 
-  renderPosts = () => {
-    const { posts } = this.state;
+  const renderPosts = () => {
 
     return posts.map(post => {
       const { title, body, id } = post;
@@ -48,15 +40,12 @@ class Posts extends Component {
     });
   }
 
-  render() {
-    const { loading } = this.state;
 
-    return (
-      <Container>
-        {loading ? 'loading...' : this.renderPosts()}
-      </Container>
-    );
-  }
+  return (
+    <Container>
+      {loading ? 'loading...' : renderPosts()}
+    </Container>
+  );
 }
 
 export default Posts;

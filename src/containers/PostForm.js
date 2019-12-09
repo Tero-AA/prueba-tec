@@ -1,60 +1,46 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import { postPost } from '../utils/api';
 
-class PostForm extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      title: '',
-      body: '',
-      userId: 1
-    }
+function PostForm(props) {
+
+  const [values, setValues] = useState({ title: '', body: '', userId: 1 });
+
+
+  const handleChange = e => {
+    const { name, value } = e.target
+    setValues({ ...values, [name]: value })
   }
 
-  handleChange = (e) => {
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
-
-    this.setState({
-      [name]: value,
-    })
-  }
-
-  handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
 
-    postPost(this.state)
+    postPost(values)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
 
-  render() {
-    const { title, body } = this.state;
-
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Input
-          name="title"
-          onChange={this.handleChange}
-          placeholder="title"
-          value={title}
-        />
-        <TextArea
-          name="body"
-          onChange={this.handleChange}
-          placeholder="body"
-          value={body}
-        />
-        <Button>Submit</Button>
-      </Form>
-    );
-  }
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Input
+        name="title"
+        onChange={handleChange}
+        placeholder="title"
+        value={values.title}
+      />
+      <TextArea
+        name="body"
+        onChange={handleChange}
+        placeholder="body"
+        value={values.body}
+      />
+      <Button>Submit</Button>
+    </Form>
+  );
 }
 
 export default PostForm;
