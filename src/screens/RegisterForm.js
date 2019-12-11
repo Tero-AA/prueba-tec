@@ -3,8 +3,6 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
-import { login } from '../utils/auth';
 import { Redirect } from "react-router-dom";
 
 
@@ -14,9 +12,10 @@ const Container = styled.div`
   background-color: white;
   height: 100vh;
   padding:  150px 0 0 0;
-  `;
+`;
 
-function LoginForm(props) {
+function RegisterForm() {
+
   const [values, setValues] = useState({ username: '', password: '' });
 
   const handleChange = e => {
@@ -27,24 +26,18 @@ function LoginForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    login({ username, password }).then(data => {
-      console.log(data);
-      localStorage.setItem('token', data.token);
-      props.history.push('/');
-    }).catch(error => { console.error(error); }
-    )
-  }
+    console.log("You'r register has been completed!");
 
+  }
   const { username, password } = values;
 
   const token = localStorage.getItem('token');
 
   if (token) return <Redirect to="/" />
-
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <h2>Login</h2>
+        <h2>Sign In</h2>
         <Input
           name="username"
           onChange={handleChange}
@@ -57,11 +50,10 @@ function LoginForm(props) {
           placeholder="Password"
           value={password}
         />
-        <Button>Sign In</Button>
-        Don't have an account, follow this link <Link to="/register">Sign In</Link>
+        <Button>Sign Up</Button>
       </Form>
     </Container>
   )
 }
 
-export default LoginForm;
+export default RegisterForm;

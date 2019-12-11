@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PostForm from '../containers/PostForm';
 import Posts from '../containers/Posts';
+import { Redirect } from "react-router-dom";
 
 function Home() {
+  const token = localStorage.getItem('token');
+  if (!token) return <Redirect to='/login' />;
   return (
     <>
       <h1>Consuming API with React for nominapp applicattion</h1>

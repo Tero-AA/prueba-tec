@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Home from '../screens/Home';
 import LoginForm from '../screens/LoginForm';
 import {
-  BrowserRouter as Router,
   Route,
+  Switch,
 } from "react-router-dom";
 import styled from 'styled-components';
-
+import RegisterForm from '../screens/RegisterForm';
 
 const Container = styled.div`
   max-width: 1200px;
@@ -14,20 +14,16 @@ const Container = styled.div`
   background-color: white;
 `;
 
-class App extends Component {
-  render() {
-    return (
-      <Container>
-        <Router>
-          <div>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={LoginForm} />
-          </div>
-        </Router>
-
-      </Container>
-    );
-  }
+function App() {
+  return (
+    <Container>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/register" component={RegisterForm} />
+      </Switch>
+    </Container>
+  );
 }
 
 export default App;
