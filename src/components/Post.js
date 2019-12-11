@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  border: 2px solid #333;
+  border: 2px solid lightgray;
   box-sizing: border-box;
   flex-grow: 1;
   margin: 10px;

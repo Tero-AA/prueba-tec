@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
-  background-color: #eee;
+  background-color: whitesmoke;
 `;
 
 function Posts() {
@@ -23,7 +23,7 @@ function Posts() {
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const renderPosts = () => {
 
