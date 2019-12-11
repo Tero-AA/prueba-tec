@@ -15,3 +15,10 @@ export function postPost({ title, body }) {
     }
   })
 }
+
+export function deletePost() {
+  return axios({
+    method: 'delete',
+    url: 'https://jsonplaceholder.typicode.com/posts/1',
+  })
+}

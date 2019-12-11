@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
-import Button from '../components/Button';
+import { Button } from 'react-bootstrap';
 import Form from '../components/Form';
 import styled from 'styled-components';
 import { Redirect } from "react-router-dom";
@@ -50,7 +50,7 @@ function RegisterForm() {
           placeholder="Password"
           value={password}
         />
-        <Button>Sign Up</Button>
+        <Button onClick={handleSubmit} bsstyle="primary">Sing up</Button>
       </Form>
     </Container>
   )

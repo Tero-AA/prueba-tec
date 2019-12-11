@@ -1,23 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  border: 2px solid lightgray;
-  box-sizing: border-box;
-  flex-grow: 1;
-  margin: 10px;
-  min-width: 280px;
-  padding: 0 20px;
-  width: 30%;
-  background-color: #fff;
-`;
+import { Card, Button } from 'react-bootstrap';
+import { deletePost } from '../utils/api';
 
 const Post = ({ title, body }) => {
+
+  const handleClick = e => {
+    e.preventDefault();
+
+    deletePost()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
-    <Container>
-      <h1>{title}</h1>
-      <p>{body}</p>
-    </Container>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>
+          {body}
+        </Card.Text>
+        <Button onClick={handleClick} variant="primary">Delete post</Button>
+      </Card.Body>
+    </Card>
   );
 };
 

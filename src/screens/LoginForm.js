@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
-import Button from '../components/Button';
+import { Button } from 'react-bootstrap';
 import Form from '../components/Form';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
@@ -31,8 +31,10 @@ function LoginForm(props) {
       console.log(data);
       localStorage.setItem('token', data.token);
       props.history.push('/');
-    }).catch(error => { console.error(error); }
-    )
+    }).catch(error => {
+      console.error(error);
+      localStorage.setItem('token', null);
+    })
   }
 
   const { username, password } = values;
@@ -57,8 +59,10 @@ function LoginForm(props) {
           placeholder="Password"
           value={password}
         />
-        <Button>Sign In</Button>
-        Don't have an account, follow this link <Link to="/register">Sign In</Link>
+        <Button onClick={handleSubmit} bsstyle="primary">Login</Button>
+        <p>
+          Don't have an account?, follow this link <Link to="/register">Sign In</Link>
+        </p>
       </Form>
     </Container>
   )
