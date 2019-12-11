@@ -37,7 +37,7 @@ function RegisterForm() {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <h2>Sign In</h2>
+        <h2>Sign Up</h2>
         <Input
           name="username"
           onChange={handleChange}

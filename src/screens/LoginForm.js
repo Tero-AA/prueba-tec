@@ -61,7 +61,7 @@ function LoginForm(props) {
         />
         <Button onClick={handleSubmit} bsstyle="primary">Login</Button>
         <p>
-          Don't have an account?, follow this link <Link to="/register">Sign In</Link>
+          Don't have an account?, follow this link <Link to="/register">Sign Up</Link>
         </p>
       </Form>
     </Container>
