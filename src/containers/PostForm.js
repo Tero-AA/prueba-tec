@@ -6,7 +6,7 @@ import Form from '../components/Form';
 import { postPost } from '../utils/api';
 
 
-function PostForm(props) {
+function PostForm() {
 
   const [values, setValues] = useState({ title: '', body: '', userId: 1 });
 

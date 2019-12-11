@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import PostForm from './PostForm';
-import Posts from './Posts';
+import Home from '../screens/Home';
+import LoginForm from '../screens/LoginForm';
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
 import styled from 'styled-components';
+
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
+  background-color: white;
 `;
 
 class App extends Component {
   render() {
     return (
       <Container>
-        <h1>Consuming API with React for nominapp applicattion</h1>
-        <h2>Create post: </h2>
-        <PostForm />
-        <h2>Posts: </h2>
-        <Posts />
+        <Router>
+          <div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={LoginForm} />
+          </div>
+        </Router>
+
       </Container>
     );
   }
