@@ -1,9 +1,22 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import LoginForm from '../screens/LoginForm';
+import RegisterForm from '../screens/RegisterForm';
+import Home from '../screens/Home';
+import { shallow } from 'enzyme';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('renders without crashing', () => {
+  shallow(<App />);
+});
+
+it('renders login without crashing', () => {
+  shallow(<LoginForm />);
+});
+
+it('renders login without crashing', () => {
+  shallow(<RegisterForm />);
+});
+
+it('renders login without crashing', () => {
+  shallow(<Home />);
 });

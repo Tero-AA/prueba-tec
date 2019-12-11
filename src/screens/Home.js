@@ -8,7 +8,7 @@ function Home() {
   if (!token) return <Redirect to='/login' />;
   return (
     <>
-      <h1>Consuming API with React for nominapp applicattion</h1>
+      <h1>Consuming API with React for Nominapp application</h1>
       <h2>Create post: </h2>
       <PostForm />
       <h2>Posts: </h2>

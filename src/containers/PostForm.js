@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../components/Input';
 import TextArea from '../components/TextArea';
-import Button from '../components/Button';
+import { Button } from 'react-bootstrap';
 import Form from '../components/Form';
 import { postPost } from '../utils/api';
 
@@ -38,7 +38,7 @@ function PostForm() {
         placeholder="body"
         value={values.body}
       />
-      <Button>Submit</Button>
+      <Button onClick={handleSubmit} bsstyle="primary">Submit</Button>
     </Form>
   );
 }
